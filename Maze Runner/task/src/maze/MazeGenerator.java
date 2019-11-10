@@ -12,7 +12,15 @@ public class MazeGenerator {
         mazeCells = new int[size][size];
 
          initCells();
-         generatePath();
+
+         //Generate path
+        createPath(1, 1);
+
+         //Entrance
+        setAsPath(1, 0);
+
+        //Exit
+        setAsPath(size-2, size-1);
 
         return new Maze(mazeCells);
     }
@@ -25,15 +33,9 @@ public class MazeGenerator {
         }
     }
 
-    private static void generatePath() {
-        createPath(1, 1);
-    }
-
     private static void createPath(int x, int y) {
         setAsPath(x, y);
-        System.out.println(x + "  " + y);
         List<Directions> directions = getShuffledPossibleDirection(x, y);
-        System.out.println(directions);
             for(Directions direction : directions) {
                 if(isPossibleDirection(direction, x, y))
                     createPath(x + direction.getNextX(), y + direction.getNextY());
@@ -45,7 +47,7 @@ public class MazeGenerator {
     }
 
     private static List<Directions> getShuffledPossibleDirection(int x, int y) {
-        List<Directions> directions = new ArrayList<Directions>();
+        List<Directions> directions = new ArrayList<>();
 
         for(Directions direction : Directions.values()) {
             if(isPossibleDirection(direction, x, y)) {
@@ -89,10 +91,10 @@ public class MazeGenerator {
     }
 
     private static boolean checkEast(int x, int y) {
-        int xStart = x+1;
-        int xEnd = x-1;
-        int yStart = y+2;
-        int yEnd = y+1;
+        int xStart = x-1;
+        int xEnd = x+1;
+        int yStart = y+1;
+        int yEnd = y+2;
 
         if(xStart < 0 || xEnd >= mazeCells[0].length || yStart < 0 || yEnd >= mazeCells.length) {
             return false;
@@ -110,8 +112,8 @@ public class MazeGenerator {
     }
 
     private static boolean checkSouth(int x, int y) {
-        int xStart = x+2;
-        int xEnd = x+1;
+        int xStart = x+1;
+        int xEnd = x+2;
         int yStart = y-1;
         int yEnd = y+1;
 
@@ -131,8 +133,8 @@ public class MazeGenerator {
     }
 
     private static boolean checkWest(int x, int y) {
-        int xStart = x+1;
-        int xEnd = x-1;
+        int xStart = x-1;
+        int xEnd = x+1;
         int yStart = y-2;
         int yEnd = y-1;
 
