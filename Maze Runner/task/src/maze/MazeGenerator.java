@@ -8,8 +8,8 @@ public class MazeGenerator {
 
     private static int[][] mazeCells;
 
-    public static Maze generateMaze(int size) {
-        mazeCells = new int[size][size];
+    public static Maze generateMaze(int rows, int columns) {
+        mazeCells = new int[rows][columns];
 
          initCells();
 
@@ -20,9 +20,9 @@ public class MazeGenerator {
         setAsPath(1, 0);
 
         //Exit
-        for(int i=size-2; i>0; i--) {
-            if(mazeCells[i][size-2] == 0) {
-                setAsPath(i, size-1);
+        for(int i=rows-2; i>0; i--) {
+            if(mazeCells[i][columns-2] == 0) {
+                setAsPath(i, columns-1);
                 break;
             }
         }
@@ -80,7 +80,7 @@ public class MazeGenerator {
         int yStart = y-1;
         int yEnd = y+1;
 
-        if(xStart < 0 || xEnd >= mazeCells[0].length || yStart < 0 || yEnd >= mazeCells.length) {
+        if(xStart < 0 || xEnd >= mazeCells.length || yStart < 0 || yEnd >= mazeCells[0].length) {
             return false;
         }
 
@@ -101,7 +101,7 @@ public class MazeGenerator {
         int yStart = y+1;
         int yEnd = y+2;
 
-        if(xStart < 0 || xEnd >= mazeCells[0].length || yStart < 0 || yEnd >= mazeCells.length) {
+        if(xStart < 0 || xEnd >= mazeCells.length || yStart < 0 || yEnd >= mazeCells[0].length) {
             return false;
         }
 
@@ -122,7 +122,7 @@ public class MazeGenerator {
         int yStart = y-1;
         int yEnd = y+1;
 
-        if(xStart < 0 || xEnd >= mazeCells[0].length || yStart < 0 || yEnd >= mazeCells.length) {
+        if(xStart < 0 || xEnd >= mazeCells.length || yStart < 0 || yEnd >= mazeCells[0].length) {
             return false;
         }
 
@@ -143,7 +143,7 @@ public class MazeGenerator {
         int yStart = y-2;
         int yEnd = y-1;
 
-        if(xStart < 0 || xEnd >= mazeCells[0].length || yStart < 0 || yEnd >= mazeCells.length) {
+        if(xStart < 0 || xEnd >= mazeCells.length || yStart < 0 || yEnd >= mazeCells[0].length) {
             return false;
         }
 

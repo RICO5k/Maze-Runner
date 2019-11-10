@@ -1,13 +1,22 @@
 package maze;
 
+import java.util.Scanner;
+
 public class MazeRunner {
 
-    private final int MAZE_SIZE = 10;
+    private Scanner scanner;
 
-    public MazeRunner(){};
+    public MazeRunner(Scanner scanner){
+        this.scanner = scanner;
+    };
 
     public void run() {
-        Maze maze = MazeGenerator.generateMaze(MAZE_SIZE);
+        System.out.println("Please, enter the sie of a maze");
+
+        int rows = scanner.nextInt();
+        int columns = scanner.nextInt();
+
+        Maze maze = MazeGenerator.generateMaze(rows, columns);
         maze.printMaze();
     }
 }
