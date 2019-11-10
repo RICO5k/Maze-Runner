@@ -20,7 +20,12 @@ public class MazeGenerator {
         setAsPath(1, 0);
 
         //Exit
-        setAsPath(size-2, size-1);
+        for(int i=size-2; i>0; i--) {
+            if(mazeCells[i][size-2] == 0) {
+                setAsPath(i, size-1);
+                break;
+            }
+        }
 
         return new Maze(mazeCells);
     }
