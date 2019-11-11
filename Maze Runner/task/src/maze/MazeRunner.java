@@ -39,6 +39,7 @@ public class MazeRunner {
         menu.addMenuItem("2", new LoadMazeItem(this));
         menu.addMenuItem("3", new SaveMazeItem(this));
         menu.addMenuItem("4", new DisplayMazeItem(this));
+        menu.addMenuItem("5", new FindEscapeItem(this));
         menu.addMenuItem("0", new ExitMenuItem(this));
     }
 

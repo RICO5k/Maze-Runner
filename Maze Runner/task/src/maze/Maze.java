@@ -1,6 +1,7 @@
 package maze;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Maze {
@@ -25,6 +26,8 @@ public class Maze {
                     this.mazeCells[i][j] = 1;
                 else if(sign == ' ') {
                     this.mazeCells[i][j] = 0;
+                } else if(sign == '/') {
+                    this.mazeCells[i][j] = 2;
                 }
             }
         }
@@ -40,12 +43,26 @@ public class Maze {
                     sb.append("  ");
                 } else if(mazeCells[i][j] == 1) {
                     sb.append("\u2588\u2588");
+                } else if(mazeCells[i][j] == 2) {
+                    sb.append("//");
                 }
             }
             mazeList.add(sb.toString());
         }
 
         return mazeList;
+    }
+
+    public int[][] getMazeCellsCopy() {
+        int[][] copy = new int[mazeCells.length][mazeCells[0].length];
+
+        for(int i=0; i<mazeCells.length; i++) {
+            for(int j=0; j<mazeCells[0].length; j++) {
+                copy[i][j] = mazeCells[i][j];
+            }
+        }
+
+        return copy;
     }
 
     public void printMaze() {
